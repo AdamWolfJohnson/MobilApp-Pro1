@@ -153,7 +153,7 @@ export default function SignupScreen() {
         </View>
 
         <View style={styles.formContainer}>
-          <Text style={styles.welcomeText}>RoadReady'e Katılın</Text>
+          <Text style={styles.welcomeText}>İsveç Ehliyet Sınavı'na Katılın</Text>
           <Text style={styles.subtitle}>Yolculuğunuza başlamak için hesap oluşturun</Text>
           
           {error && (

@@ -1,6 +1,6 @@
 module.exports = {
   expo: {
-    name: "RoadReady",
+    name: "İsveç Ehliyet Sınavı",
     slug: "road-ready",
     version: "1.0.0",
     orientation: "portrait",

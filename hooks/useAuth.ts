@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import storage from '../utils/storage';
+import { router } from 'expo-router';
 
 // Define user type
 export interface User {
@@ -182,13 +183,10 @@ export function useAuth() {
     }
   }, []);
 
-  // Logout function - completely rewritten for reliability
+  // Logout function - completely rewritten with direct navigation
   const logout = useCallback(async () => {
     try {
-      // First clear storage completely
-      await storage.clear();
-      
-      // Then update state to trigger UI changes
+      // Immediately set authenticated to false to trigger UI updates
       setState({
         user: null,
         isLoading: false,
@@ -197,7 +195,16 @@ export function useAuth() {
         logoutMessage: "Çıkış yapıldı"
       });
       
-      console.log('Logout successful - all storage cleared');
+      // Clear all storage in the background
+      await Promise.all([
+        storage.remove(USER_STORAGE_KEY),
+        storage.remove(TOKEN_STORAGE_KEY),
+        storage.clear()
+      ]);
+      
+      // Force immediate navigation to login screen
+      router.replace('/');
+      
       return true;
     } catch (error) {
       console.error('Logout error:', error);
@@ -211,7 +218,10 @@ export function useAuth() {
         logoutMessage: "Çıkış yapıldı"
       });
       
-      return true; // Return true anyway to ensure navigation happens
+      // Force navigation to login screen even if logout fails
+      router.replace('/');
+      
+      return true;
     }
   }, []);
 

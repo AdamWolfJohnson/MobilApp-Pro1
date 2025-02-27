@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView, Platform, Alert } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView, Platform } from 'react-native';
 import { User, Settings, LogOut, Award, BookOpen, Clock, Bell, Shield, CircleHelp as HelpCircle } from 'lucide-react-native';
 import { useAuth } from '../../hooks/useAuth';
 import { router } from 'expo-router';
@@ -16,32 +16,10 @@ export default function ProfileScreen() {
     }
   }, [isAuthenticated, isLoading]);
 
-  const handleLogout = async () => {
-    Alert.alert(
-      tr('logoutConfirmTitle'),
-      tr('logoutConfirmMessage'),
-      [
-        {
-          text: tr('cancel'),
-          style: 'cancel'
-        },
-        {
-          text: tr('logout'),
-          style: 'destructive',
-          onPress: async () => {
-            try {
-              await logout();
-              // Force navigation to login screen
-              router.replace('/');
-            } catch (error) {
-              console.error('Logout error:', error);
-              // Force navigation to login screen even if logout fails
-              router.replace('/');
-            }
-          }
-        }
-      ]
-    );
+  const handleLogout = () => {
+    // Call logout directly without any confirmation
+    logout();
+    // Navigation is handled inside the logout function
   };
 
   if (isLoading) {

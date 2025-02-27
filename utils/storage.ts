@@ -47,7 +47,8 @@ const storage = {
    */
   clear: async (): Promise<void> => {
     try {
-      await AsyncStorage.clear();
+      const keys = await AsyncStorage.getAllKeys();
+      await AsyncStorage.multiRemove(keys);
     } catch (error) {
       console.error('Error clearing data:', error);
       throw error;

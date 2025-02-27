@@ -132,32 +132,10 @@ export default function PersonalInfoScreen() {
     }
   };
   
-  const handleLogout = async () => {
-    Alert.alert(
-      tr('logoutConfirmTitle'),
-      tr('logoutConfirmMessage'),
-      [
-        {
-          text: tr('cancel'),
-          style: 'cancel'
-        },
-        {
-          text: tr('logout'),
-          style: 'destructive',
-          onPress: async () => {
-            try {
-              await logout();
-              // Force navigation to login screen
-              router.replace('/');
-            } catch (error) {
-              console.error('Logout error:', error);
-              // Force navigation to login screen even if logout fails
-              router.replace('/');
-            }
-          }
-        }
-      ]
-    );
+  const handleLogout = () => {
+    // Call logout directly without any confirmation
+    logout();
+    // Navigation is handled inside the logout function
   };
 
   return (

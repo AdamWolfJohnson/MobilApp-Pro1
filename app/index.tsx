@@ -102,7 +102,7 @@ export default function LoginScreen() {
             <View style={styles.logoCircle}>
               <LogIn color="#fff" size={32} />
             </View>
-            <Text style={styles.appName}>RoadReady</Text>
+            <Text style={styles.appName}>İsveç Ehliyet Sınavı</Text>
             <Text style={styles.tagline}>Sürücü Belgesi Sınav Arkadaşınız</Text>
           </View>
         </View>
@@ -179,19 +179,13 @@ export default function LoginScreen() {
           <View style={styles.socialLoginContainer}>
             <TouchableOpacity style={styles.socialButton}>
               <Image 
-                source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg' }} 
+                source={{ uri: 'https://fonts.gstatic.com/s/i/productlogos/googleg/v6/24px.svg' }} 
                 style={styles.socialIcon} 
               />
             </TouchableOpacity>
             <TouchableOpacity style={styles.socialButton}>
               <Image 
                 source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg' }} 
-                style={styles.socialIcon} 
-              />
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.socialButton}>
-              <Image 
-                source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg' }} 
                 style={styles.socialIcon} 
               />
             </TouchableOpacity>
@@ -385,19 +379,20 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
   socialButton: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
+    width: 60,
+    height: 60,
+    borderRadius: 30,
     backgroundColor: '#f5f5f5',
     alignItems: 'center',
     justifyContent: 'center',
-    marginHorizontal: 12,
+    marginHorizontal: 20,
     borderWidth: 1,
     borderColor: '#e0e0e0',
   },
   socialIcon: {
-    width: 24,
-    height: 24,
+    width: 30,
+    height: 30,
+    resizeMode: 'contain',
   },
   signupContainer: {
     flexDirection: 'row',
